@@ -1,21 +1,28 @@
 version: '3.8'
+
 services:
   minio:
-    hostname: minio
     image: quay.io/minio/minio:latest
     expose:
-      - "9000"
-      - "9001"
+      - "9000:9000"
+      - "9001:9001"
     environment:
-      MINIO_ROOT_USER: changeme
-      MINIO_ROOT_PASSWORD: changeme
+      TZ: "Asia/Bangkok"
+      MINIO_ROOT_USER: ${MINIO_ROOT_USER}
+      MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD}
     healthcheck:
       test: ["CMD", "mc", "ready", "local"]
       interval: 5s
       timeout: 5s
       retries: 5
-    command: server --console-address ":9001" http://minio{1...4}/disk
+    command: server --console-address ":9001" http://minio-node-0{1...4}.buu.ac.th/disk
     volumes:
       - minio-data:/disk
+    networks:
+      - minio-network
+      
 volumes:
   minio-data:
+  
+networks:
+  minio-network:
