@@ -16,9 +16,9 @@ services:
       - /var/disk:/disk
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
-    logging:
-      driver: syslog
-      options:
-        syslog-address: "tcp://127.0.0.1:514"
-        tag: "minio"
+    #logging:
+    #  driver: syslog
+    #  options:
+    #    syslog-address: "tcp://127.0.0.1:514"
+    #    tag: "minio"
     network_mode: "host"
