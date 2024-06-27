@@ -20,5 +20,5 @@ services:
       driver: syslog
       options:
         syslog-address: "tcp://127.0.0.1:514"
-        tag: "mysql"
+        tag: "minio"
     network_mode: "host"
