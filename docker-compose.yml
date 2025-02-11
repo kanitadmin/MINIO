@@ -12,7 +12,7 @@ services:
       interval: 5s
       timeout: 5s
       retries: 5
-    command: server --console-address ":9001" http://minio-node-0{1...4}.buu.ac.th/disk
+    command: server --console-address ":9001" http://${MINIO_SERVER_NAME}-0{1...4}.buu.ac.th/disk
     volumes:
       - /var/disk:/disk
       - /etc/timezone:/etc/timezone:ro
