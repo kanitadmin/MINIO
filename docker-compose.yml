@@ -6,6 +6,7 @@ services:
     environment:
       MINIO_ROOT_USER: ${MINIO_ROOT_USER}
       MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD}
+      MINIO_STORAGE_CLASS_STANDARD: "EC:1"
     healthcheck:
       test: ["CMD", "mc", "ready", "local"]
       interval: 5s
